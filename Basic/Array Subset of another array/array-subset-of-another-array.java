@@ -47,16 +47,28 @@ class GFG {
 
 class Compute {
     public String isSubset( long a1[], long a2[], long n, long m) {
-        for(int i =0;i<m;i++){
-            for(int j = 0;j<n;j++){
-                if(a2[i]==a1[j]){
+
+	//iterate the a2 array
+        for(int i =0;i<m;i++)
+	{
+	    //iterate the a1 array		
+            for(int j = 0;j<n;j++)
+	    {
+		//if the both are same
+                if(a2[i]==a1[j])
+		{
                     a1[j] = -1;
                     a2[i] = -1;
                 }
             }
+
+	    //whether the a2[i] integer value is not contain in a1
             if(a2[i]!=-1)
+	    {
                 return "No";
+	    }
         }
+	//return the value
         return "Yes";
     }
 }
