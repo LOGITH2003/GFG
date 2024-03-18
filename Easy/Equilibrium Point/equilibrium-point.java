@@ -1,0 +1,63 @@
+//{ Driver Code Starts
+import java.io.*;
+import java.util.*;
+import java.util.stream.*;
+
+class Main {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br =
+            new BufferedReader(new InputStreamReader(System.in));
+        int t =
+            Integer.parseInt(br.readLine().trim()); // Inputting the testcases
+        while (t-- > 0) {
+            
+            //taking input n
+            int n = Integer.parseInt(br.readLine().trim());
+            long arr[] = new long[n];
+            String inputLine[] = br.readLine().trim().split(" ");
+            
+            //adding elements to the array
+            for (int i = 0; i < n; i++) {
+                arr[i] = Long.parseLong(inputLine[i]);
+            }
+
+            Solution ob = new Solution();
+            
+            //calling equilibriumPoint() function
+            System.out.println(ob.equilibriumPoint(arr, n));
+        }
+    }
+}
+// } Driver Code Ends
+
+
+class Solution {
+
+    
+    // a: input array
+    // n: size of array
+    // Function to find equilibrium point in the array.
+    public static int equilibriumPoint(long arr[], int n) {
+
+         
+        long tot_count = 0, remove_count = 0;
+
+        // to Add the all the value in the variable
+        for(long num : arr)
+            tot_count +=num;
+            
+        for(int i = 0;i<n;i++)
+        {
+            tot_count -= arr[i];
+
+            if(remove_count == tot_count)
+                return i+1;
+
+            remove_count += arr[i];
+        }
+
+        // return the default value
+        return -1;
+    }
+}
