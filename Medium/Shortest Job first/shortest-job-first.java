@@ -30,12 +30,18 @@ class GFG {
 
 class Solution {
     static int solve(int bt[] ) {
+
+        // sort the array to calculate the times calculation
         Arrays.sort(bt);
         int count = 0,totalCount = 0;
+      
+        // iterate the bt array 
         for(int i = 1;i<bt.length;i++){
             count +=  bt[i-1];
             totalCount  += count;
         }
+
+        // return total waiting time / number of scheduling process
         return totalCount/bt.length;
 
   }
