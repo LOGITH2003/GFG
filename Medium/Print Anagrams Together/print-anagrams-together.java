@@ -53,11 +53,19 @@ class GFG {
 
 class Solution {
     public List<List<String>> Anagrams(String[] string_list) {
-        HashMap<String,List<Integer>> map = new HashMap<>();
+
+	// create the hashmap to store the anagram string index value
+	HashMap<String,List<Integer>> map = new HashMap<>();
+
+	// iterate the array
         for(int i = 0;i<string_list.length;i++){
+
+	    // convert the string into character array and sorting the character array and again convert into string for the checking purchase of anagram
             char [] c = string_list[i].toCharArray();
             Arrays.sort(c);
             String s = new String(c);
+
+	    // add the index and string in the hashmap
             if(map.containsKey(s)){
                 List<Integer>  val = map.get(s);
                 val.add(i);
@@ -69,6 +77,9 @@ class Solution {
                 map.put(s,val);
             }
         }
+
+	// once iterate all the string in the hashmap and start move to next phase
+	// create the list<list<string>> and sort the comman anagram string separate list and store all the list in one list and return it.
         List<List<String>> list = new ArrayList<>();
         for(var ls : map.entrySet()){
             List<String> val = new ArrayList<>();
@@ -77,9 +88,8 @@ class Solution {
             }
             list.add(val);
         }
-//        System.out.println(map);
 
-
+	// return the list.
         return list;
     }
 }
